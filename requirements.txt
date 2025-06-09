@@ -1,0 +1,14 @@
+transformers>=4.40.0
+sentence-transformers>=2.2.2
+datasets>=2.19.1
+
+faiss-cpu>=1.7.4
+
+llama-cpp-python>=0.2.62
+
+langchain>=0.1.20
+langchain-community>=0.0.34
+
+pypdf>=3.17.0
+
+tqdm>=4.66.4
