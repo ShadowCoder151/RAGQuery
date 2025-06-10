@@ -1,9 +1,9 @@
 # Loading the PDF, chunking and embedding
 
-from langchain.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 
 def PDFLoadText(pdf_path: str):
     reader = PyPDFLoader(pdf_path)
@@ -13,7 +13,7 @@ def ChunkText(docs, size: int=500, overlap: int=100):
     splitter = RecursiveCharacterTextSplitter(chunk_size=size, chunk_overlap=overlap)
     return splitter.split_documents(docs)
 
-def embed_chunks(chunks: list[str], model_name="sentence-transformers/all-MiniLM-L6-v2"):
+def EmbedChunks(chunks: list[str], model_name="sentence-transformers/all-MiniLM-L6-v2"):
     embeddings = HuggingFaceEmbeddings(model_name=model_name)
     vec_store = FAISS.from_documents(chunks, embedding=embeddings)
     return vec_store
@@ -23,3 +23,8 @@ def embed_chunks(chunks: list[str], model_name="sentence-transformers/all-MiniLM
 # Testing using a sample PDF file
 pdf_path = "data\\study_guide.pdf"
 
+raw_docs = PDFLoadText(pdf_path)
+chunks = ChunkText(raw_docs)
+vec_db = EmbedChunks(chunks)
+
+print(len(chunks))
