@@ -18,7 +18,12 @@ def EmbedChunks(chunks: list[str], model_name="sentence-transformers/all-MiniLM-
     vec_store = FAISS.from_documents(chunks, embedding=embeddings)
     return vec_store
 
+def SaveVectorDB(vec_db, path="data\\vec_db"):
+    vec_db.save_local(path)
 
+def LoadVectorDB(path="data\\vec_db", model_name="sentence-transformers/all-MiniLM-L6-v2"):
+    embeddings = HuggingFaceEmbeddings(model_name=model_name)
+    return FAISS.load_local(folder_path=path, embeddings=embeddings, allow_dangerous_deserialization=True)
 
 # Testing using a sample PDF file
 pdf_path = "data\\study_guide.pdf"
@@ -28,3 +33,5 @@ chunks = ChunkText(raw_docs)
 vec_db = EmbedChunks(chunks)
 
 print(len(chunks))
+
+print(LoadVectorDB())
