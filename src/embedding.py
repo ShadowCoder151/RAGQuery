@@ -9,7 +9,7 @@ def PDFLoadText(pdf_path: str):
     reader = PyPDFLoader(pdf_path)
     return reader.load()
 
-def ChunkText(docs, size: int=500, overlap: int=100):
+def ChunkText(docs, size: int=300, overlap: int=50):
     splitter = RecursiveCharacterTextSplitter(chunk_size=size, chunk_overlap=overlap)
     return splitter.split_documents(docs)
 
