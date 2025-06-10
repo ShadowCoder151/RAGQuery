@@ -1,2 +1,4 @@
-# FlowChart (Data Ingestion + Vector Indexing)
-![Demo Screenshot](chart1.jpg)
+# FlowChart 
+
+## 1. Data Ingestion + Vector Indexing
+![Demo Screenshot](image2.jpg)
