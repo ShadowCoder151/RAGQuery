@@ -18,13 +18,13 @@ def EmbedChunks(chunks: list[str], model_name="sentence-transformers/all-MiniLM-
     vec_store = FAISS.from_documents(chunks, embedding=embeddings)
     return vec_store
 
-# Testing using a sample PDF file
-pdf_path = "data\\study_guide.pdf"
+# # Testing using a sample PDF file
+# pdf_path = "data\\study_guide.pdf"
 
-raw_docs = PDFLoadText(pdf_path)
-chunks = ChunkText(raw_docs)
-vec_db = EmbedChunks(chunks)
+# raw_docs = PDFLoadText(pdf_path)
+# chunks = ChunkText(raw_docs)
+# vec_db = EmbedChunks(chunks)
 
-# print(len(chunks))
+# # print(len(chunks))
 
-# print(LoadVectorDB())
+# # print(LoadVectorDB())
