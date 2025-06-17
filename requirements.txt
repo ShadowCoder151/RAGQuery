@@ -1,0 +1,7 @@
+langchain
+llama-cpp-python
+sentence-transformers
+chromadb
+tiktoken
+fastapi
+uvicorn
